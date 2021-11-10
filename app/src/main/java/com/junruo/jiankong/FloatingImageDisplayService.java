@@ -276,7 +276,7 @@ public class FloatingImageDisplayService extends Service {
                                         zong = zong + Double.parseDouble(total);
                                         yong = yong + Double.parseDouble(use);
                                         sheng = sheng + Double.parseDouble(remain);
-                                    } else if ("64866243".equals(liuliang.getString("feePolicyId"))) {
+                                    } else if ("62128493".equals(liuliang.getString("feePolicyId"))) {
                                     } else if (!liuliang.getString("addupItemCode").equals("40008")){//通用流量包
                                         String total = liuliang.getString("total");//流量包总量
                                         String use = liuliang.getString("use");//流量包使用

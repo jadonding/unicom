@@ -388,7 +388,7 @@ public class MainActivity extends AppCompatActivity {
                                         sheng = sheng + Double.parseDouble(remain);
 
                                         dayin = dayin + "\n通用包名称：" + feePolicyName + "，已使用：" + use + "M，剩余不限速" + remain + "M\n";
-                                    } else if ("64866243".equals(liuliang.getString("feePolicyId"))) {
+                                    } else if ("62128493".equals(liuliang.getString("feePolicyId"))) {
                                     } else if (!liuliang.getString("addupItemCode").equals("40008")) {//通用流量包
                                         String feePolicyName = liuliang.getString("feePolicyName");//流量包名称
                                         String total = liuliang.getString("total");//流量包总量
