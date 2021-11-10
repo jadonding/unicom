@@ -81,8 +81,8 @@ public class FloatingImageDisplayService extends Service {
                 Context.MODE_PRIVATE);
         // 获取编辑器来存储数据到sharedpreferences中
         cookie = share.getString("Cookie","");
-        gao = share.getString("gao","320");
-        kuan = share.getString("kuan","230");
+        gao = share.getString("gao","380");
+        kuan = share.getString("kuan","250");
         xgao = share.getString("xgao","152");
         xkuan = share.getString("xkuan","202");
 
@@ -264,10 +264,20 @@ public class FloatingImageDisplayService extends Service {
 
                         for (int i = 0; i < details.size(); i++) {
                             JSONObject liuliang = details.getJSONObject(i);
-                            if (liuliang.getString("limited").equals("0")) {//套内流量包
+                            if (null != liuliang.getString("total") && !"".equals(liuliang.getString("total"))) {//套内流量包
                                 if (liuliang.getString("addupItemCode") != null){
+                                    if ("64866243".equals(liuliang.getString("feePolicyId")) && !"0.00".equals(liuliang.getString("remain"))) {
+                                        //沃派畅视卡（江西后付费新）
+                                        String total = "15360.00";//流量包总量
+                                        String use = liuliang.getString("use");//流量包使用
+                                        double woRemain = Double.parseDouble("15360.00") - Double.parseDouble(use);
+                                        String remain = String.format("%.2f", woRemain);//流量包剩余
 
-                                    if (!liuliang.getString("addupItemCode").equals("40008")){//通用流量包
+                                        zong = zong + Double.parseDouble(total);
+                                        yong = yong + Double.parseDouble(use);
+                                        sheng = sheng + Double.parseDouble(remain);
+                                    } else if ("64866243".equals(liuliang.getString("feePolicyId"))) {
+                                    } else if (!liuliang.getString("addupItemCode").equals("40008")){//通用流量包
                                         String total = liuliang.getString("total");//流量包总量
                                         String use = liuliang.getString("use");//流量包使用
                                         String remain = liuliang.getString("remain");//流量包剩余
